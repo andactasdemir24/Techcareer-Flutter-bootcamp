@@ -1,0 +1,11 @@
+{
+    "appbarBaslik" : "Yemek Uygulaması",
+    "yemekBaslik" : "Karışık Izgara",
+    "yemekAciklama" : "özel karışık ızgara",
+    "yemekFiyat" : "150 TL",
+    "yemekSure" : "25 dk",
+    "aciklamaBaslik" : "Hakkında",
+    "aciklama" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s",
+    "butonAciklama" : "SEPETE EKLE",
+    "sepeteGit" : "Sepete git"
+}

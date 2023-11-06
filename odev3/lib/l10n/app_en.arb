@@ -1,0 +1,11 @@
+{
+    "appbarBaslik" : "Food App",
+    "yemekBaslik" : "The mixed grill",
+    "yemekAciklama" : "Spicy mixed grill",
+    "yemekFiyat" : "$8.50",
+    "yemekSure" : "25 min",
+    "aciklamaBaslik" : "About",
+    "aciklama" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s",
+    "butonAciklama" : "ADD TO BASKET",
+    "sepeteGit" : "Go basket"
+}

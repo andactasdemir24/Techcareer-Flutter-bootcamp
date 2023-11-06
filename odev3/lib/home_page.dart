@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:odev3/basket_page.dart';
 import 'package:odev3/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,6 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalizations.of(context)!;
     var ekranBilgisi = MediaQuery.sizeOf(context);
     final double height = ekranBilgisi.height;
     final double width = ekranBilgisi.width;
@@ -33,9 +36,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: appbarColor,
         centerTitle: true,
-        title: const Text(
-          'Food App',
-          style: TextStyle(fontFamily: 'Oswald'),
+        title: Text(
+          localization.appbarBaslik,
+          style: const TextStyle(fontFamily: 'Oswald'),
         ),
       ),
       body: Column(
@@ -66,17 +69,17 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Grilled Fish',
+                              localization.yemekBaslik,
                               style: TextStyle(fontSize: 25, color: textColor, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              'Spicy grilled fish',
+                              localization.yemekAciklama,
                               style: TextStyle(fontSize: 12, color: textColor),
                             ),
                           ],
                         ),
                         Text(
-                          '8.50 TL',
+                          localization.yemekFiyat,
                           style: TextStyle(fontSize: 25, color: textColor, fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -94,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                         const Icon(Icons.punch_clock_outlined),
                         SizedBox(width: width / 100),
                         Text(
-                          '25min',
+                          localization.yemekSure,
                           style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -103,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'About',
+                        localization.aciklamaBaslik,
                         style: TextStyle(
                           color: textColor,
                           fontWeight: FontWeight.bold,
@@ -111,9 +114,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    const Text(
-                      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s',
-                    ),
+                    Text(localization.aciklama),
                     SizedBox(height: height / 30),
                     Row(
                       children: [
@@ -143,10 +144,12 @@ class _HomePageState extends State<HomePage> {
                             )),
                         SizedBox(width: width / 10),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            dialogBuilder(context);
+                          },
                           style: ElevatedButton.styleFrom(backgroundColor: iconColor),
                           child: Text(
-                            'ADD TO CART',
+                            localization.butonAciklama,
                             style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -159,14 +162,54 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
               width: width / 1.1,
               child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: iconColor),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const BasketPage(),
+                        ));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: iconColor,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
                   child: Text(
-                    'Sepete git',
+                    localization.sepeteGit,
                     style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
                   )))
         ],
       ),
     );
   }
+}
+
+Future<void> dialogBuilder(BuildContext context) {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Basket'),
+        content: const Text('Are you sure you want to add'),
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: Theme.of(context).textTheme.labelLarge,
+            ),
+            child: const Text('Cancel'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: Theme.of(context).textTheme.labelLarge,
+            ),
+            child: const Text('Add'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
