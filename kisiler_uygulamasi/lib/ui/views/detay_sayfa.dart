@@ -1,7 +1,9 @@
 // ignore_for_file: avoid_print, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kisiler_uygulamasi/data/entity/kisiler.dart';
+import 'package:kisiler_uygulamasi/ui/cubit/detay_sayfa_cubit.dart';
 
 class DetaySayfa extends StatefulWidget {
   final Kisiler kisi; // Marking the field as final
@@ -14,10 +16,6 @@ class DetaySayfa extends StatefulWidget {
 class _DetaySayfaState extends State<DetaySayfa> {
   var tfKisiAdi = TextEditingController();
   var tfKisiTel = TextEditingController();
-
-  Future<void> guncelle(int kisi_Id, String kisi_Ad, String kisi_Tel) async {
-    print("Kişi Güncelle : $kisi_Id - $kisi_Ad - $kisi_Tel");
-  }
 
   @override
   void initState() {
@@ -49,7 +47,7 @@ class _DetaySayfaState extends State<DetaySayfa> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  guncelle(widget.kisi.kisi_id, tfKisiAdi.text, tfKisiTel.text);
+                  context.read<DetaySayfaCubit>().guncelle(widget.kisi.kisi_id, tfKisiAdi.text, tfKisiTel.text);
                 },
                 child: const Text("Güncelle"),
               ),

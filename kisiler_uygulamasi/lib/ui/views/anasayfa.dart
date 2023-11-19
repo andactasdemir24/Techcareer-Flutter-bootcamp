@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kisiler_uygulamasi/data/entity/kisiler.dart';
+import 'package:kisiler_uygulamasi/ui/cubit/anasayfa_cubit.dart';
 import 'package:kisiler_uygulamasi/ui/views/detay_sayfa.dart';
 import 'package:kisiler_uygulamasi/ui/views/kayit_sayfa.dart';
 
@@ -13,96 +15,96 @@ class Anasayfa extends StatefulWidget {
 class _AnasayfaState extends State<Anasayfa> {
   bool aramaYapiliyorMu = false;
 
-  Future<List<Kisiler>> kisileriYukle() async {
-    var kisilerListesi = <Kisiler>[];
-    var k1 = Kisiler(kisi_id: 1, kisi_ad: "Ahmet", kisi_tel: "1111");
-    var k2 = Kisiler(kisi_id: 2, kisi_ad: "Zeynep", kisi_tel: "2222");
-    var k3 = Kisiler(kisi_id: 3, kisi_ad: "Beyza", kisi_tel: "3333");
-    kisilerListesi.add(k1);
-    kisilerListesi.add(k2);
-    kisilerListesi.add(k3);
-
-    return kisilerListesi;
-  }
-
-  Future<void> ara(String aramaKelimesi) async {
-    print("Kişi Ara : $aramaKelimesi");
-  }
-
-  Future<void> sil(int kisi_id) async {
-    print("Kişi Sil : $kisi_id");
+  @override
+  void initState() {
+    super.initState();
+    context.read<AnasayfaCubit>().kisileriYukle();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: aramaYapiliyorMu ?
-        TextField(
-          decoration: const InputDecoration(hintText: "Ara"),
-          onChanged: (aramaSonucu){
-            ara(aramaSonucu);
-          },
-        ) :
-        const Text("Kişiler"),
+        title: aramaYapiliyorMu
+            ? TextField(
+                decoration: const InputDecoration(hintText: "Ara"),
+                onChanged: (aramaSonucu) {
+                  context.read<AnasayfaCubit>().ara(aramaSonucu);
+                },
+              )
+            : const Text("Kişiler"),
         actions: [
-          aramaYapiliyorMu ?
-          IconButton(onPressed: (){
-            setState(() {
-              aramaYapiliyorMu = false;
-            });
-          }, icon: const Icon(Icons.clear)) :
-          IconButton(onPressed: (){
-            setState(() {
-              aramaYapiliyorMu = true;
-            });
-          }, icon: const Icon(Icons.search)),
+          aramaYapiliyorMu
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      aramaYapiliyorMu = false;
+                    });
+                    context.read<AnasayfaCubit>().kisileriYukle();
+                  },
+                  icon: const Icon(Icons.clear))
+              : IconButton(
+                  onPressed: () {
+                    setState(() {
+                      aramaYapiliyorMu = true;
+                    });
+                  },
+                  icon: const Icon(Icons.search)),
         ],
       ),
-      body: FutureBuilder<List<Kisiler>>(
-        future: kisileriYukle(),
-        builder: (context,snapshot){
-          if(snapshot.hasData){
-            var kisilerListesi = snapshot.data;
+      body: BlocBuilder<AnasayfaCubit, List<Kisiler>>(
+        builder: (context, kisilerListesi) {
+          if (kisilerListesi.isNotEmpty) {
             return ListView.builder(
-              itemCount: kisilerListesi!.length,
-              itemBuilder: (context,indeks){//0,1,2
+              itemCount: kisilerListesi.length,
+              itemBuilder: (context, indeks) {
+                //0,1,2
                 var kisi = kisilerListesi[indeks];
                 return GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => DetaySayfa(kisi: kisi)))
                         .then((value) {
-                      print("Anasayfaya dönüldü");
+                      context.read<AnasayfaCubit>().kisileriYukle();
                     });
                   },
                   child: Card(
-                    child: SizedBox(height: 100,
+                    child: SizedBox(
+                      height: 100,
                       child: Row(
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(kisi.kisi_ad,style: const TextStyle(fontSize: 20),),
+                                Text(
+                                  kisi.kisi_ad,
+                                  style: const TextStyle(fontSize: 20),
+                                ),
                                 Text(kisi.kisi_tel)
                               ],
                             ),
                           ),
                           const Spacer(),
-                          IconButton(onPressed: (){
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text("${kisi.kisi_ad} silinsin mi?"),
-                                action: SnackBarAction(
-                                  label: "Evet",
-                                  onPressed: (){
-                                    sil(kisi.kisi_id);
-                                  },
-                                ),
-                              ),
-                            );
-                          }, icon: const Icon(Icons.clear,color: Colors.black54,))
+                          IconButton(
+                              onPressed: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text("${kisi.kisi_ad} silinsin mi?"),
+                                    action: SnackBarAction(
+                                      label: "Evet",
+                                      onPressed: () {
+                                        context.read<AnasayfaCubit>().sil(kisi.kisi_id);
+                                      },
+                                    ),
+                                  ),
+                                );
+                              },
+                              icon: const Icon(
+                                Icons.clear,
+                                color: Colors.black54,
+                              ))
                         ],
                       ),
                     ),
@@ -110,17 +112,16 @@ class _AnasayfaState extends State<Anasayfa> {
                 );
               },
             );
-          }else{
+          } else {
             return const Center();
           }
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const KayitSayfa()))
-            .then((value) {
-              print("Anasayfaya dönüldü");
-            });
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const KayitSayfa())).then((value) {
+            context.read<AnasayfaCubit>().kisileriYukle();
+          });
         },
         child: const Icon(Icons.add),
       ),
