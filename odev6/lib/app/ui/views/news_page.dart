@@ -80,6 +80,8 @@ class _NewsPageState extends State<NewsPage> {
                       autoPlayCurve: Curves.fastOutSlowIn,
                       enlargeFactor: 0.3,
                       scrollDirection: Axis.horizontal,
+                      //enlargeStrategy: CenterPageEnlargeStrategy.height,
+                      //enlargeCenterPage: true,
                     ));
               },
             ),
@@ -161,6 +163,7 @@ class _NewsPageState extends State<NewsPage> {
   }
 
   Widget buildImage(String urlImage, int index) => Container(
+        //margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 50),
         color: Colors.grey,
         child: Image.asset(
           urlImage,
