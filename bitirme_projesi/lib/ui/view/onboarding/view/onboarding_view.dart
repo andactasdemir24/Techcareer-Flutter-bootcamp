@@ -1,10 +1,9 @@
-import 'package:bitirme_projesi/ui/view/home/home_page.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../data/components/custom_button.dart';
 import '../../../../data/constants/image_const.dart';
 import '../../../../data/constants/mediaquery_const.dart';
 import '../../../../data/constants/text_const.dart';
+import '../../main/mainview.dart';
 import '../model/onboarding_model.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -94,7 +93,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomePage(),
+                            builder: (context) => const BottomNavigation(),
                           ),
                         );
                       }

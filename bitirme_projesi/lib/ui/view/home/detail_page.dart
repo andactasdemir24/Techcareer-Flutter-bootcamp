@@ -3,6 +3,7 @@ import 'package:bitirme_projesi/ui/cubit/detailpage_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/entity/yemekler.dart';
+import '../main/mainview.dart';
 
 class DetailPage extends StatefulWidget {
   final Yemekler yemek;
@@ -102,14 +103,23 @@ class _DetailPageState extends State<DetailPage> {
           const SizedBox(height: 30),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff6AA3C1),
+                  backgroundColor: const Color(0xffF7B632),
                   fixedSize: const Size(300, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   )),
               onPressed: () async {
-                await context.read<DetailPageCubit>().sepeteEkle(
-                    widget.yemek.yemek_adi, widget.yemek.yemek_resim_adi, widget.yemek.yemek_fiyat, counter, 'andac');
+                await context
+                    .read<DetailPageCubit>()
+                    .sepeteEkle(widget.yemek.yemek_adi, widget.yemek.yemek_resim_adi, widget.yemek.yemek_fiyat, counter,
+                        'andac')
+                    .then((value) => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => const AlertDialog(
+                            title: Text('Sepet'),
+                            content: Text('AlertDialog description'),
+                          ),
+                        ));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

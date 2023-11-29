@@ -19,8 +19,7 @@ class SepetDaoRepository {
       "yemek_siparis_adet": yemek_siparis_adet,
       "kullanici_adi": kullanici_adi
     };
-    var cevap = await Dio().post(url, data: FormData.fromMap(veri));
-    print("Sepete Ekle : ${cevap.data.toString()}");
+    await Dio().post(url, data: FormData.fromMap(veri));
   }
 
   Future<List<Sepet>> sepetiYukle(String kullanici_adi) async {
@@ -29,7 +28,12 @@ class SepetDaoRepository {
       "kullanici_adi": kullanici_adi,
     };
     var cevap = await Dio().post(url, data: FormData.fromMap(veri));
-    print("Sepete Getir : ${cevap.data.toString()}");
     return parseSepetCevap(cevap.data);
+  }
+
+  Future<void> urunSil(int sepet_yemek_id, String kullanici_adi) async {
+    var url = 'http://kasimadalan.pe.hu/yemekler/sepettenYemekSil.php';
+    var veri = {"sepet_yemek_id": sepet_yemek_id, "kullanici_adi": kullanici_adi};
+    await Dio().post(url, data: FormData.fromMap(veri));
   }
 }

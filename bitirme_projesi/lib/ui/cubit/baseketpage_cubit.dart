@@ -11,4 +11,16 @@ class SepetPageCubit extends Cubit<List<Sepet>> {
     var liste = await yrepo.sepetiYukle(kullanici_adi);
     emit(liste);
   }
+
+  Future<void> urunSil(int sepet_yemek_id, String kullanici_adi) async {
+    await yrepo.urunSil(sepet_yemek_id, kullanici_adi);
+  }
+
+  double hesaplaToplamFiyat(List<Sepet> sepetListesi) {
+    double toplam = 0;
+    for (var urun in sepetListesi) {
+      toplam += urun.yemek_fiyat * urun.yemek_siparis_adet;
+    }
+    return toplam;
+  }
 }
