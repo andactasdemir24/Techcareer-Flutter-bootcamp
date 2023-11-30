@@ -2,6 +2,8 @@ import 'package:bitirme_projesi/ui/view/basket/view/basket_page.dart';
 import 'package:bitirme_projesi/ui/view/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/constants/color_const.dart';
+
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
 
@@ -48,7 +50,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color(0xffF7B632),
+        selectedItemColor: cOrange,
         onTap: _onItemTapped,
       ),
     );

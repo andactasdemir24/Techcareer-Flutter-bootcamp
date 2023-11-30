@@ -4,6 +4,7 @@ import 'package:bitirme_projesi/ui/cubit/detailpage_cubit.dart';
 import 'package:bitirme_projesi/ui/view/main/mainview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../data/constants/color_const.dart';
 import '../../../../data/entity/yemekler.dart';
 import '../widgets/custom_pay_button.dart';
 
@@ -38,11 +39,11 @@ class _DetailPageState extends State<DetailPage> {
           const SizedBox(height: 50),
           Text(
             '₺${widget.yemek.yemek_fiyat.toString()}',
-            style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xff6aa3c1), fontSize: 30),
+            style: const TextStyle(fontWeight: FontWeight.bold, color: cMain, fontSize: 30),
           ),
           Text(
             widget.yemek.yemek_adi,
-            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 30),
+            style: const TextStyle(fontWeight: FontWeight.bold, color: cBlack, fontSize: 30),
           ),
           const SizedBox(height: 30),
           Row(
@@ -81,7 +82,7 @@ class _DetailPageState extends State<DetailPage> {
           const SizedBox(height: 30),
           ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xffF7B632),
+                  backgroundColor:  cOrange,
                   fixedSize: const Size(300, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -142,11 +143,11 @@ class _DetailPageState extends State<DetailPage> {
                 children: [
                   const Text(
                     addBasket,
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: cWhite, fontSize: 18),
                   ),
                   Text(
                     totalPrice.toString(),
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: const TextStyle(color: cWhite, fontSize: 18),
                   )
                 ],
               )),

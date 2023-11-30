@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../data/constants/color_const.dart';
 import '../view/detail_page.dart';
 
 class CustomDetailFoodImage extends StatelessWidget {
@@ -20,12 +21,12 @@ class CustomDetailFoodImage extends StatelessWidget {
             width: 300,
             height: 300,
             decoration: BoxDecoration(
-                color: Colors.blue,
+                color: cBlue,
                 borderRadius: BorderRadius.circular(20),
                 gradient: const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Color(0xffc2e3f3), Color(0xff6aa3c1)],
+                  colors: [cGradient, cMain],
                 ) // Half of the container width for an oval shape
                 ),
           ),

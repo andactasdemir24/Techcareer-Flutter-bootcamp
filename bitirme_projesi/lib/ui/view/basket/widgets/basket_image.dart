@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../data/constants/color_const.dart';
 import '../../../../data/entity/sepet.dart';
 
 class BasketImage extends StatelessWidget {
@@ -20,7 +21,7 @@ class BasketImage extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Color(0xffc2e3f3), Color(0xff6aa3c1)],
+          colors: [cGradient, cMain],
         ),
       ),
       child: Image.network(
@@ -30,4 +31,3 @@ class BasketImage extends StatelessWidget {
     );
   }
 }
-

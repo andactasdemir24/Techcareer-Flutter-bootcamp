@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../data/constants/color_const.dart';
 import '../../../../data/entity/yemekler.dart';
 
 class FoodsDetails extends StatelessWidget {
@@ -23,7 +24,7 @@ class FoodsDetails extends StatelessWidget {
                   gradient: const LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Color(0xffc2e3f3), Color(0xff6aa3c1)],
+                    colors: [cGradient, cMain],
                   ))),
           Column(
             children: [
@@ -43,11 +44,11 @@ class FoodsDetails extends StatelessWidget {
                   children: [
                     Text(
                       '₺${yemek.yemek_fiyat.toString()}',
-                      style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
+                      style: const TextStyle(fontWeight: FontWeight.bold, color: cWhite, fontSize: 18),
                     ),
                     const Icon(
                       Icons.shopping_basket_rounded,
-                      color: Color(0xffF7BC38),
+                      color: cOrange,
                     )
                   ],
                 ),

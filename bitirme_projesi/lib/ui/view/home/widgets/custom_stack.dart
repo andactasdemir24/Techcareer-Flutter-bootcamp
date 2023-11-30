@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../data/constants/color_const.dart';
 import '../../../../data/constants/image_const.dart';
 import '../../../../data/constants/text_const.dart';
 
@@ -26,7 +27,7 @@ class FoodsStack extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30.0),
-              color: Colors.white,
+              color: cWhite,
             ),
             child: const TextField(
               decoration: InputDecoration(
@@ -43,7 +44,7 @@ class FoodsStack extends StatelessWidget {
             child: Center(
                 child: Text(
               foods,
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: cWhite),
             )))
       ],
     );

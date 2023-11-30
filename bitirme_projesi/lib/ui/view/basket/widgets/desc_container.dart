@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../data/constants/color_const.dart';
 import '../../../../data/entity/sepet.dart';
 import '../../../cubit/baseketpage_cubit.dart';
 
@@ -18,7 +19,7 @@ class DescriptionContainer extends StatelessWidget {
       width: 190,
       height: 100,
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: cWhite,
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(10),
           bottomRight: Radius.circular(10),
@@ -45,7 +46,7 @@ class DescriptionContainer extends StatelessWidget {
                   'Total price: ₺${sepet.yemek_fiyat * sepet.yemek_siparis_adet}',
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
-                    color: Color(0xffF7B632),
+                    color: cOrange,
                   ),
                 ),
               ],
@@ -58,7 +59,7 @@ class DescriptionContainer extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.delete,
-                color: Colors.grey,
+                color: cGrey,
               ),
             ),
           ],

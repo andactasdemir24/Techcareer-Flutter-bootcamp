@@ -1,3 +1,4 @@
+import 'package:bitirme_projesi/data/constants/color_const.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../data/components/custom_button.dart';
@@ -57,7 +58,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             ),
             Container(
               decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: cWhite,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0))),
               child: Column(
                 children: [
@@ -85,7 +86,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                           margin: const EdgeInsets.only(right: 5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: currentIndex == index ? const Color(0xff6AA3C1) : Colors.grey,
+                            color: currentIndex == index ? cMain : cGrey,
                           ),
                         ),
                       ),
@@ -94,7 +95,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                   CustomButton(
                     text: const Text(
                       cont,
-                      style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
+                      style: TextStyle(color: cWhite, fontSize: 20, fontWeight: FontWeight.w600),
                     ),
                     onPressed: () {
                       setState(() {

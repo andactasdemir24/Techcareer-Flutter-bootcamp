@@ -3,6 +3,7 @@ import 'package:bitirme_projesi/ui/view/home/view/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../data/constants/color_const.dart';
 import '../../../../data/entity/yemekler.dart';
 import '../widgets/custom_stack.dart';
 import '../widgets/foods_details.dart';
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
+      backgroundColor: cBg,
       body: CustomScrollView(
         slivers: <Widget>[
           const SliverToBoxAdapter(

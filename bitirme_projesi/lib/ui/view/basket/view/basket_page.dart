@@ -3,6 +3,7 @@ import 'package:bitirme_projesi/ui/cubit/baseketpage_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import '../../../../data/constants/color_const.dart';
 import '../../../../data/constants/image_const.dart';
 import '../../../../data/constants/text_const.dart';
 import '../../main/mainview.dart';
@@ -53,7 +54,7 @@ class _SepetPageState extends State<SepetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
+      backgroundColor: cBg,
       appBar: AppBar(
         title: const Text(
           alertTitle,
@@ -110,7 +111,7 @@ class _SepetPageState extends State<SepetPage> {
                       height: 50,
                       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: const Color(0xffF7B632)),
+                        style: ElevatedButton.styleFrom(backgroundColor: cOrange),
                         onPressed: () {
                           setState(() {
                             showOverlay(context);
@@ -119,7 +120,7 @@ class _SepetPageState extends State<SepetPage> {
                         },
                         child: const Text(
                           payButtonText,
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: TextStyle(color: cWhite, fontSize: 20),
                         ),
                       ),
                     ),
