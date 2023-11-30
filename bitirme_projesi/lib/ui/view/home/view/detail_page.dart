@@ -95,7 +95,7 @@ class _DetailPageState extends State<DetailPage> {
                       .then((value) => showDialog<String>(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                                title: const Text(alertTitle),
+                                title: const Text(success),
                                 content: const Text(alertDesc),
                                 actions: <Widget>[
                                   TextButton(

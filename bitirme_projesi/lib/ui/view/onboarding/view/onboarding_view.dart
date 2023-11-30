@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../data/components/custom_button.dart';
 import '../../../../data/constants/image_const.dart';
 import '../../../../data/constants/mediaquery_const.dart';
@@ -14,6 +15,13 @@ class OnboardingView extends StatefulWidget {
 }
 
 class _OnboardingViewState extends State<OnboardingView> {
+  bool isSeen = false;
+
+  Future<void> saveIsSeen() async {
+    final preferences = await SharedPreferences.getInstance();
+    preferences.setBool('seen', true);
+  }
+
   List<OnboardingModel> onbList = [
     OnboardingModel(onb1Image, onb1Title, onb1Description),
     OnboardingModel(onb2Image, onb2Title, onb2Description),
@@ -85,19 +93,21 @@ class _OnboardingViewState extends State<OnboardingView> {
                   ),
                   CustomButton(
                     text: const Text(
-                      'Continue',
+                      cont,
                       style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
                     ),
                     onPressed: () {
-                      if (currentIndex == onbList.length - 1) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const BottomNavigation(),
-                          ),
-                        );
-                      }
-
+                      setState(() {
+                        if (currentIndex == onbList.length - 1) {
+                          saveIsSeen();
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const BottomNavigation(),
+                            ),
+                          );
+                        }
+                      });
                       controller.nextPage(
                         duration: const Duration(milliseconds: 100),
                         curve: Curves.bounceIn,

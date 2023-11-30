@@ -36,7 +36,6 @@ class SepetDaoRepository {
       "kullanici_adi": kullanici_adi,
     };
     var cevap = await Dio().post(url, data: FormData.fromMap(veri));
-    print(cevap.data.toString());
     return parseSepetCevap(cevap.data);
   }
 

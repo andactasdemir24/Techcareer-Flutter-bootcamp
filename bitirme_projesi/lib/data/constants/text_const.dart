@@ -16,7 +16,9 @@ const String increase = 'Increase the quantity to add the product to the cart.';
 const String addBasket = 'Add Basket';
 const String foods = 'Foods';
 const String search = 'Search for menu, ingredients';
+const String cont= 'Continue';
 
 //basket
 const String payButtonText = 'Pay';
 const String addFoods = 'Please add foods to your cart.';
+const String success = 'Succesfully!';

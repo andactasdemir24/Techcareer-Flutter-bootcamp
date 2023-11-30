@@ -3,6 +3,7 @@ import 'package:bitirme_projesi/ui/cubit/baseketpage_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import '../../../../data/constants/image_const.dart';
 import '../../../../data/constants/text_const.dart';
 import '../../main/mainview.dart';
 import '../widgets/basket_image.dart';
@@ -30,7 +31,7 @@ class _SepetPageState extends State<SepetPage> {
     if (!isOverlayDisplayed) {
       overlayEntry = OverlayEntry(
         builder: (context) => Center(
-          child: Lottie.asset('assets/lottie/lottie.json', height: 200, width: 350, fit: BoxFit.cover),
+          child: Lottie.asset(basketPageLottie, height: 200, width: 350, fit: BoxFit.cover),
         ),
       );
 

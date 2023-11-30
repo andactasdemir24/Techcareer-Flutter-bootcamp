@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../data/constants/image_const.dart';
 import '../../../../data/constants/text_const.dart';
 
 class FoodsStack extends StatelessWidget {
@@ -13,7 +14,7 @@ class FoodsStack extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Image.asset(
-          'assets/images/appbar.png',
+          appbarLottie,
           width: MediaQuery.of(context).size.width,
           height: 230,
           fit: BoxFit.cover,
