@@ -6,7 +6,15 @@ import 'package:dio/dio.dart';
 
 class SepetDaoRepository {
   List<Sepet> parseSepetCevap(String cevap) {
-    return SepetCevap.fromJson(json.decode(cevap)).sepet_yemekler;
+    try {
+      if (cevap.isNotEmpty) {
+        return SepetCevap.fromJson(json.decode(cevap)).sepet_yemekler;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      return [];
+    }
   }
 
   Future<void> sepeteEkle(
@@ -28,6 +36,7 @@ class SepetDaoRepository {
       "kullanici_adi": kullanici_adi,
     };
     var cevap = await Dio().post(url, data: FormData.fromMap(veri));
+    print(cevap.data.toString());
     return parseSepetCevap(cevap.data);
   }
 

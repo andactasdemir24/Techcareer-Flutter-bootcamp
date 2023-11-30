@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bitirme_projesi/data/constants/text_const.dart';
 import 'package:bitirme_projesi/ui/cubit/detailpage_cubit.dart';
+import 'package:bitirme_projesi/ui/view/main/mainview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../data/entity/yemekler.dart';
-import '../main/mainview.dart';
+import '../../../../data/entity/yemekler.dart';
+import '../widgets/custom_pay_button.dart';
 
 class DetailPage extends StatefulWidget {
   final Yemekler yemek;
@@ -25,38 +27,14 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Ürün Detay',
+          appbarText,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body: Column(
         children: [
-          Center(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  width: 300,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xffc2e3f3), Color(0xff6aa3c1)],
-                      ) // Half of the container width for an oval shape
-                      ),
-                ),
-                Image.network(
-                  'http://kasimadalan.pe.hu/yemekler/resimler/${widget.yemek.yemek_resim_adi}',
-                  height: 300,
-                  fit: BoxFit.cover, // Yüksekliği artırın
-                ),
-              ],
-            ),
-          ),
+          CustomDetailFoodImage(widget: widget),
           const SizedBox(height: 50),
           Text(
             '₺${widget.yemek.yemek_fiyat.toString()}',
@@ -109,23 +87,61 @@ class _DetailPageState extends State<DetailPage> {
                     borderRadius: BorderRadius.circular(20),
                   )),
               onPressed: () async {
-                await context
-                    .read<DetailPageCubit>()
-                    .sepeteEkle(widget.yemek.yemek_adi, widget.yemek.yemek_resim_adi, widget.yemek.yemek_fiyat, counter,
-                        'andac')
-                    .then((value) => showDialog<String>(
+                if (counter > 0) {
+                  await context
+                      .read<DetailPageCubit>()
+                      .sepeteEkle(widget.yemek.yemek_adi, widget.yemek.yemek_resim_adi, widget.yemek.yemek_fiyat,
+                          counter, 'andac')
+                      .then((value) => showDialog<String>(
                           context: context,
-                          builder: (BuildContext context) => const AlertDialog(
-                            title: Text('Sepet'),
-                            content: Text('AlertDialog description'),
+                          builder: (BuildContext context) => AlertDialog(
+                                title: const Text(alertTitle),
+                                content: const Text(alertDesc),
+                                actions: <Widget>[
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      textStyle: Theme.of(context).textTheme.labelLarge,
+                                    ),
+                                    child: const Text(alertButton),
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const BottomNavigation(),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              )));
+                } else {
+                  showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text(warning),
+                        content: const Text(increase),
+                        actions: <Widget>[
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                            ),
+                            child: const Text(alertButton),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                           ),
-                        ));
+                        ],
+                      );
+                    },
+                  );
+                }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Sepete Ekle',
+                    addBasket,
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   Text(

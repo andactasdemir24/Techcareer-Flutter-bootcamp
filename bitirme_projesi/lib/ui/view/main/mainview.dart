@@ -1,5 +1,5 @@
-import 'package:bitirme_projesi/ui/view/basket/basket_page.dart';
-import 'package:bitirme_projesi/ui/view/home/home_page.dart';
+import 'package:bitirme_projesi/ui/view/basket/view/basket_page.dart';
+import 'package:bitirme_projesi/ui/view/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {

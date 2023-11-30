@@ -16,6 +16,12 @@ class SepetPageCubit extends Cubit<List<Sepet>> {
     await yrepo.urunSil(sepet_yemek_id, kullanici_adi);
   }
 
+  void sil(List<Sepet> sepetListesi) {
+    for (var sil in sepetListesi) {
+      urunSil(sil.sepet_yemek_id, 'andac');
+    }
+  }
+
   double hesaplaToplamFiyat(List<Sepet> sepetListesi) {
     double toplam = 0;
     for (var urun in sepetListesi) {
