@@ -39,7 +39,7 @@ class _DetailPageState extends State<DetailPage> {
           const SizedBox(height: 50),
           Text(
             '₺${widget.yemek.yemek_fiyat.toString()}',
-            style: const TextStyle(fontWeight: FontWeight.bold, color: cMain, fontSize: 30),
+            style: const TextStyle(fontWeight: FontWeight.bold, color: cOrange, fontSize: 30),
           ),
           Text(
             widget.yemek.yemek_adi,
@@ -80,77 +80,89 @@ class _DetailPageState extends State<DetailPage> {
             ],
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor:  cOrange,
-                  fixedSize: const Size(300, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-              onPressed: () async {
-                if (counter > 0) {
-                  await context
-                      .read<DetailPageCubit>()
-                      .sepeteEkle(widget.yemek.yemek_adi, widget.yemek.yemek_resim_adi, widget.yemek.yemek_fiyat,
-                          counter, 'andac')
-                      .then((value) => showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                                title: const Text(success),
-                                content: const Text(alertDesc),
-                                actions: <Widget>[
-                                  TextButton(
-                                    style: TextButton.styleFrom(
-                                      textStyle: Theme.of(context).textTheme.labelLarge,
+          Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5), // Shadow color
+                  spreadRadius: 0, // Spread radius
+                  blurRadius: 10, // Blur radius
+                  offset: const Offset(0, 5), // Changes position of shadow
+                ),
+              ],
+            ),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: cOrange,
+                    fixedSize: const Size(300, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
+                onPressed: () async {
+                  if (counter > 0) {
+                    await context
+                        .read<DetailPageCubit>()
+                        .sepeteEkle(widget.yemek.yemek_adi, widget.yemek.yemek_resim_adi, widget.yemek.yemek_fiyat,
+                            counter, 'andac')
+                        .then((value) => showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                                  title: const Text(success),
+                                  content: const Text(alertDesc),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                        textStyle: Theme.of(context).textTheme.labelLarge,
+                                      ),
+                                      child: const Text(alertButton),
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => const BottomNavigation(),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                    child: const Text(alertButton),
-                                    onPressed: () {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => const BottomNavigation(),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ],
-                              )));
-                } else {
-                  showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: const Text(warning),
-                        content: const Text(increase),
-                        actions: <Widget>[
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              textStyle: Theme.of(context).textTheme.labelLarge,
+                                  ],
+                                )));
+                  } else {
+                    showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text(warning),
+                          content: const Text(increase),
+                          actions: <Widget>[
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                textStyle: Theme.of(context).textTheme.labelLarge,
+                              ),
+                              child: const Text(alertButton),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
                             ),
-                            child: const Text(alertButton),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    addBasket,
-                    style: TextStyle(color: cWhite, fontSize: 18),
-                  ),
-                  Text(
-                    totalPrice.toString(),
-                    style: const TextStyle(color: cWhite, fontSize: 18),
-                  )
-                ],
-              )),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      addBasket,
+                      style: TextStyle(color: cWhite, fontSize: 18),
+                    ),
+                    Text(
+                      totalPrice.toString(),
+                      style: const TextStyle(color: cWhite, fontSize: 18),
+                    )
+                  ],
+                )),
+          ),
         ],
       ),
     );

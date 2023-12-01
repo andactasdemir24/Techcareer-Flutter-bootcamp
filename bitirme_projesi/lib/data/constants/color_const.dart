@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 const Color cWhite = Colors.white;
-const Color cMain = Color(0xff6AA3C1);
-const Color cGradient = Color(0xffc2e3f3);
+const Color cMain = Colors.white;
+const Color cGradient = Colors.white;
 const Color cGrey = Colors.grey;
 const Color cOrange = Color(0xffF7B632);
 const Color cBlue = Colors.blue;

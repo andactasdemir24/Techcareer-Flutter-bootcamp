@@ -29,4 +29,8 @@ class SepetPageCubit extends Cubit<List<Sepet>> {
     }
     return toplam;
   }
+
+  Future<void> urunAdetAzaltVeGerekirseSil(int sepetYemekId, String kullaniciAdi) async {
+    await yrepo.urunAdetAzaltVeGerekirseSil(sepetYemekId, kullaniciAdi);
+}
 }

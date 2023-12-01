@@ -20,12 +20,21 @@ class FoodsDetails extends StatelessWidget {
               width: 200,
               height: 250,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [cGradient, cMain],
-                  ))),
+                borderRadius: BorderRadius.circular(20),
+                gradient: const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [cGradient, cMain],
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5), // Shadow color
+                    spreadRadius: 1, // Spread radius
+                    blurRadius: 5, // Blur radius
+                    offset: const Offset(0, 2), // Changes position of shadow
+                  ),
+                ],
+              )),
           Column(
             children: [
               Image.network(
@@ -38,13 +47,13 @@ class FoodsDetails extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       '₺${yemek.yemek_fiyat.toString()}',
-                      style: const TextStyle(fontWeight: FontWeight.bold, color: cWhite, fontSize: 18),
+                      style: const TextStyle(fontWeight: FontWeight.bold, color: cBlack, fontSize: 18),
                     ),
                     const Icon(
                       Icons.shopping_basket_rounded,

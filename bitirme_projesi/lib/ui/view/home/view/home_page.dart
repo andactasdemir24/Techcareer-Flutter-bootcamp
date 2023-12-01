@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             builder: (context, yemeklerListesi) {
               if (yemeklerListesi.isNotEmpty) {
                 return SliverPadding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
                     sliver: SliverGrid(
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2, crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: (1.5 / 2)),

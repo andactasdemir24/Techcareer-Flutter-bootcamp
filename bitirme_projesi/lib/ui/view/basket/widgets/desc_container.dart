@@ -18,12 +18,20 @@ class DescriptionContainer extends StatelessWidget {
     return Container(
       width: 190,
       height: 100,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: cWhite,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topRight: Radius.circular(10),
           bottomRight: Radius.circular(10),
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5), // Shadow color
+            spreadRadius: 1, // Spread radius
+            blurRadius: 5, // Blur radius
+            offset: const Offset(0, 3), // Changes position of shadow
+          ),
+        ],
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -53,12 +61,15 @@ class DescriptionContainer extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                context.read<SepetPageCubit>().urunSil(sepet.sepet_yemek_id, 'andac').whenComplete(() {
+                context
+                    .read<SepetPageCubit>()
+                    .urunAdetAzaltVeGerekirseSil(sepet.sepet_yemek_id, 'andac')
+                    .whenComplete(() {
                   context.read<SepetPageCubit>().sepetiYukle('andac');
                 });
               },
               icon: const Icon(
-                Icons.delete,
+                Icons.remove_circle_outline,
                 color: cGrey,
               ),
             ),

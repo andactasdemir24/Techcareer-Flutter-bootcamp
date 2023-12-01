@@ -72,22 +72,36 @@ class _SepetPageState extends State<SepetPage> {
                     itemCount: sepetListesi.length,
                     itemBuilder: (context, index) {
                       var sepet = sepetListesi[index];
-                      print(sepetListesi[index].kullanici_adi);
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Stack(
-                                  children: [
-                                    BasketImage(sepet: sepet),
-                                  ],
-                                ),
-                                DescriptionContainer(sepet: sepet),
-                              ],
-                            ),
-                          ],
+                      return Dismissible(
+                        key: Key(sepet.sepet_yemek_id.toString()),
+                        background: Container(
+                          color: Colors.red,
+                          alignment: Alignment.centerRight,
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: const Icon(Icons.delete, color: Colors.white),
+                        ),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) {
+                          context.read<SepetPageCubit>().urunSil(sepet.sepet_yemek_id, 'andac').then((_) {
+                            context.read<SepetPageCubit>().sepetiYukle('andac'); // Sepeti yeniden yükle
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Stack(
+                                    children: [
+                                      BasketImage(sepet: sepet),
+                                    ],
+                                  ),
+                                  DescriptionContainer(sepet: sepet),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -111,6 +125,16 @@ class _SepetPageState extends State<SepetPage> {
                       width: double.infinity,
                       height: 50,
                       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5), // Shadow color
+                            spreadRadius: 0, // Spread radius
+                            blurRadius: 10, // Blur radius
+                            offset: const Offset(0, 5), // Changes position of shadow
+                          ),
+                        ],
+                      ),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(backgroundColor: cOrange),
                         onPressed: () {

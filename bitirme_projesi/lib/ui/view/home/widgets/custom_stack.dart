@@ -14,11 +14,23 @@ class FoodsStack extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Image.asset(
-          appbarLottie,
-          width: MediaQuery.of(context).size.width,
-          height: 230,
-          fit: BoxFit.cover,
+        Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5), // Shadow color
+                spreadRadius: 2, // Spread radius
+                blurRadius: 10, // Blur radius
+                offset: const Offset(0, 10), // Changes position of shadow
+              ),
+            ],
+          ),
+          child: Image.asset(
+            appbarLottie,
+            width: MediaQuery.of(context).size.width,
+            height: 200,
+            fit: BoxFit.cover,
+          ),
         ),
         Positioned(
           bottom: 90,

@@ -21,8 +21,16 @@ class BasketImage extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [cGradient, cMain],
+          colors: [cGradient, cWhite],
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5), // Shadow color
+            spreadRadius: 1, // Spread radius
+            blurRadius: 5, // Blur radius
+            offset: const Offset(0, 3), // Changes position of shadow
+          ),
+        ],
       ),
       child: Image.network(
         'http://kasimadalan.pe.hu/yemekler/resimler/${sepet.yemek_resim_adi}',
