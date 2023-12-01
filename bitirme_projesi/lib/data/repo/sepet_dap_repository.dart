@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:collection/collection.dart';
 
 import 'package:bitirme_projesi/data/entity/sepet.dart';
 import 'package:bitirme_projesi/data/entity/sepet_cevap.dart';
@@ -17,8 +18,16 @@ class SepetDaoRepository {
     }
   }
 
-  Future<void> sepeteEkle(
+  Future<void> sepeteEkleGuncelle(
       String yemek_adi, String yemek_resim_adi, int yemek_fiyat, int yemek_siparis_adet, String kullanici_adi) async {
+    var mevcutSepet = await sepetiYukle(kullanici_adi);
+    Sepet? mevcutUrun = mevcutSepet.firstWhereOrNull((urun) => urun.yemek_adi == yemek_adi);
+
+    if (mevcutUrun != null) {
+      await urunSil(mevcutUrun.sepet_yemek_id, kullanici_adi);
+      yemek_siparis_adet += mevcutUrun.yemek_siparis_adet;
+    }
+
     var url = 'http://kasimadalan.pe.hu/yemekler/sepeteYemekEkle.php';
     var veri = {
       "yemek_adi": yemek_adi,

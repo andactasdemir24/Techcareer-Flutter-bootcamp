@@ -72,6 +72,7 @@ class _SepetPageState extends State<SepetPage> {
                     itemCount: sepetListesi.length,
                     itemBuilder: (context, index) {
                       var sepet = sepetListesi[index];
+                      print(sepetListesi[index].kullanici_adi);
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                         child: Column(
