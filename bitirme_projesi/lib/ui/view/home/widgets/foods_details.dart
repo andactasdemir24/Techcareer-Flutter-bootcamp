@@ -28,41 +28,46 @@ class FoodsDetails extends StatelessWidget {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5), // Shadow color
-                    spreadRadius: 1, // Spread radius
-                    blurRadius: 5, // Blur radius
-                    offset: const Offset(0, 2), // Changes position of shadow
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: const Offset(0, 2),
                   ),
                 ],
               )),
-          Column(
-            children: [
-              Image.network(
-                'http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}',
-                width: 160, // Resmin genişliğini ayarla
-                height: 130, // Resmin yüksekliğini ayarla
-              ),
-              Text(
-                yemek.yemek_adi,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '₺${yemek.yemek_fiyat.toString()}',
-                      style: const TextStyle(fontWeight: FontWeight.bold, color: cBlack, fontSize: 18),
-                    ),
-                    const Icon(
-                      Icons.shopping_basket_rounded,
-                      color: cOrange,
-                    )
-                  ],
+          GestureDetector(
+            onLongPress: () {
+              print('basıldı');
+            },
+            child: Column(
+              children: [
+                Image.network(
+                  'http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}',
+                  width: 160,
+                  height: 130,
                 ),
-              )
-            ],
+                Text(
+                  yemek.yemek_adi,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '₺${yemek.yemek_fiyat.toString()}',
+                        style: const TextStyle(fontWeight: FontWeight.bold, color: cBlack, fontSize: 18),
+                      ),
+                      const Icon(
+                        Icons.shopping_basket_rounded,
+                        color: cOrange,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

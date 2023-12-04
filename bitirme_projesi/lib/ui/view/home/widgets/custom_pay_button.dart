@@ -27,13 +27,13 @@ class CustomDetailFoodImage extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [cGradient, cMain],
-                ) // Half of the container width for an oval shape
+                )
                 ),
           ),
           Image.network(
             'http://kasimadalan.pe.hu/yemekler/resimler/${widget.yemek.yemek_resim_adi}',
             height: 300,
-            fit: BoxFit.cover, // Yüksekliği artırın
+            fit: BoxFit.cover,
           ),
         ],
       ),

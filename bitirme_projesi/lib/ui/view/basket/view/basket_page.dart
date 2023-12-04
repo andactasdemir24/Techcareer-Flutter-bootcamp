@@ -128,10 +128,10 @@ class _SepetPageState extends State<SepetPage> {
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5), // Shadow color
-                            spreadRadius: 0, // Spread radius
-                            blurRadius: 10, // Blur radius
-                            offset: const Offset(0, 5), // Changes position of shadow
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 0,
+                            blurRadius: 10,
+                            offset: const Offset(0, 5),
                           ),
                         ],
                       ),

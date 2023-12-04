@@ -18,10 +18,10 @@ class FoodsStack extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5), // Shadow color
-                spreadRadius: 2, // Spread radius
-                blurRadius: 10, // Blur radius
-                offset: const Offset(0, 10), // Changes position of shadow
+                color: Colors.grey.withOpacity(0.5), 
+                spreadRadius: 2, 
+                blurRadius: 10, 
+                offset: const Offset(0, 10),
               ),
             ],
           ),

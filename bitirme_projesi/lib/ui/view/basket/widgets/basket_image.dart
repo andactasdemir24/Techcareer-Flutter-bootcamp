@@ -25,10 +25,10 @@ class BasketImage extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5), // Shadow color
-            spreadRadius: 1, // Spread radius
-            blurRadius: 5, // Blur radius
-            offset: const Offset(0, 3), // Changes position of shadow
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1, 
+            blurRadius: 5, 
+            offset: const Offset(0, 3), 
           ),
         ],
       ),
