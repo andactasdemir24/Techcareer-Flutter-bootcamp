@@ -1,4 +1,5 @@
 import 'package:bitirme_projesi/ui/cubit/detailpage_cubit.dart';
+import 'package:bitirme_projesi/ui/cubit/favoripage_cubit.dart';
 import 'package:bitirme_projesi/ui/cubit/homepage_cubit.dart';
 import 'package:bitirme_projesi/ui/cubit/baseketpage_cubit.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => HomePageCubit()),
           BlocProvider(create: (context) => DetailPageCubit()),
           BlocProvider(create: (context) => SepetPageCubit()),
+          BlocProvider(create: (context) => FavoritePageCubit()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

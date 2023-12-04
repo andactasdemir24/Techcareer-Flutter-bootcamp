@@ -18,9 +18,9 @@ class FoodsStack extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5), 
-                spreadRadius: 2, 
-                blurRadius: 10, 
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 10,
                 offset: const Offset(0, 10),
               ),
             ],
@@ -28,12 +28,12 @@ class FoodsStack extends StatelessWidget {
           child: Image.asset(
             appbarLottie,
             width: MediaQuery.of(context).size.width,
-            height: 200,
+            height: 170,
             fit: BoxFit.cover,
           ),
         ),
         Positioned(
-          bottom: 90,
+          bottom: 60,
           left: 20,
           right: 20,
           child: Container(
@@ -52,7 +52,7 @@ class FoodsStack extends StatelessWidget {
           ),
         ),
         const Positioned(
-            bottom: 30,
+            bottom: 5,
             child: Center(
                 child: Text(
               foods,

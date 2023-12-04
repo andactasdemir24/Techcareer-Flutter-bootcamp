@@ -84,9 +84,9 @@ class _DetailPageState extends State<DetailPage> {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.5), 
+                  color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 0,
-                  blurRadius: 10, 
+                  blurRadius: 10,
                   offset: const Offset(0, 5),
                 ),
               ],

@@ -1,4 +1,5 @@
 import 'package:bitirme_projesi/ui/view/basket/view/basket_page.dart';
+import 'package:bitirme_projesi/ui/view/favoriler/favori_page.dart';
 import 'package:bitirme_projesi/ui/view/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     SepetPage(),
+    FavoritePage(),
   ];
 
   void _onItemTapped(int index) {
@@ -47,6 +49,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
               size: 30,
             ),
             label: 'Basket',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite,
+              size: 30,
+            ),
+            label: 'Favorite',
           ),
         ],
         currentIndex: _selectedIndex,

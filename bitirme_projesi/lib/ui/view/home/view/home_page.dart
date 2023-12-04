@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
                     sliver: SliverGrid(
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: (1.5 / 2)),
+                            crossAxisCount: 2, crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: (1.4 / 2)),
                         delegate: SliverChildBuilderDelegate((context, index) {
                           var yemek = yemeklerListesi[index];
                           return GestureDetector(
