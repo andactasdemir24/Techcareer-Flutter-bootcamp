@@ -17,4 +17,9 @@ class FavoritePageCubit extends Cubit<List<Yemekler>> {
 
     emit(List.from(favoriler));
   }
+
+  void clearAll() {
+    favoriler.clear();
+    emit(List.from(favoriler));
+  }
 }
