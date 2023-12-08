@@ -86,7 +86,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                           margin: const EdgeInsets.only(right: 5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: currentIndex == index ? cMain : cGrey,
+                            color: currentIndex == index ? cOrange : cGrey,
                           ),
                         ),
                       ),

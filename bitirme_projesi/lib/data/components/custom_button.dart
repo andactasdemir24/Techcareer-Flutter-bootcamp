@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:bitirme_projesi/data/constants/color_const.dart';
 import '../constants/mediaquery_const.dart';
 
 class CustomButton extends StatelessWidget {
@@ -15,7 +15,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xff6AA3C1),
+            backgroundColor: cOrange,
             fixedSize: Size(displayWidth(context) * 0.9, displayHeight(context) * 0.07),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),

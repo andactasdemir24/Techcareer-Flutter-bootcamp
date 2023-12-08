@@ -1,7 +1,5 @@
 import 'package:bitirme_projesi/data/constants/color_const.dart';
 import 'package:bitirme_projesi/ui/cubit/favoripage_cubit.dart';
-import 'package:bitirme_projesi/ui/cubit/homepage_cubit.dart';
-import 'package:bitirme_projesi/ui/view/home/view/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,7 +45,7 @@ class FavoritePage extends StatelessWidget {
                       title: Text(context.read<FavoritePageCubit>().favoriler[index].yemek_adi,
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                       subtitle:
-                          Text('Piece: ${context.read<FavoritePageCubit>().favoriler[index].yemek_fiyat.toString()}'),
+                          Text('Price: ${context.read<FavoritePageCubit>().favoriler[index].yemek_fiyat.toString()}'),
                       leading: Image.network(
                         'http://kasimadalan.pe.hu/yemekler/resimler/${context.read<FavoritePageCubit>().favoriler[index].yemek_resim_adi}',
                         height: 300,
